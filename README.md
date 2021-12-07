@@ -1,2 +1,2 @@
-# expense-tracker
-(WIP) ---> An Expense Tracker built with ReactJS
+# expense-tracker (WIP)
+An Expense Tracker built with ReactJS
