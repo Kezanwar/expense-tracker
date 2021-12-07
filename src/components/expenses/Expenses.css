@@ -1,0 +1,14 @@
+.expenses__msg {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    animation: fadeInUp 250ms ease forwards;
+}
+
+.expenses__msg p {
+    font-size: 0.8rem;
+    font-weight: 100;
+    color: var(--ion-text-color);
+    opacity: 0.8;
+}
