@@ -10,6 +10,7 @@ function NewExpenseTextbox() {
             <div className="new-expense__textbox__toptext">
                 <h2 className="text-gradient">Expense Tracker.</h2>
                 <p>A ReactJS App for tracking your monthly expenses, by <a className="link-gradient" href="www.github.com/kezanwar" target="_blank" >Kez Anwar.</a></p>
+                {/* Need to break icons into own component for chaining to user input timeline */}
                 <div className="icons"><i className="fas fa-hand-holding-usd icon"></i><i className="fas fa-donate icon"></i><i className="fas fa-piggy-bank icon"></i><i className="fas fa-long-arrow-alt-right icon"></i></div>
             </div>
             <div className="new-expense__textbox__bottomtext" >
