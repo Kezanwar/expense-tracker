@@ -4,12 +4,12 @@ import './NewExpenseAnimations.css'
 
 
 
-function NewEpxenseTextbox() {
+function NewExpenseTextbox() {
     return (
         <div className="new-expense__textbox">
             <div className="new-expense__textbox__toptext">
                 <h2 className="text-gradient">Expense Tracker.</h2>
-                <p>A ReactJS App for tracking your monthly expenses, by <a className="text-gradient" href="www.github.com/kezanwar" target="_blank" >Kez Anwar.</a></p>
+                <p>A ReactJS App for tracking your monthly expenses, by <a className="link-gradient" href="www.github.com/kezanwar" target="_blank" >Kez Anwar.</a></p>
                 <div className="icons"><i className="fas fa-hand-holding-usd icon"></i><i className="fas fa-donate icon"></i><i className="fas fa-piggy-bank icon"></i><i className="fas fa-long-arrow-alt-right icon"></i></div>
             </div>
             <div className="new-expense__textbox__bottomtext" >
@@ -21,4 +21,4 @@ function NewEpxenseTextbox() {
     )
 }
 
-export default NewEpxenseTextbox
+export default NewExpenseTextbox

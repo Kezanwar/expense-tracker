@@ -60,7 +60,7 @@ function NewExpense(props) {
                     </div>
 
                     <div className="new-expense__control btn">
-                        <button className="custom-btn btn-6 background-gradient" type='submit'>Track Expense <i class="fas fa-pencil-alt"></i></button>
+                        <button className="background-gradient" type='submit'>Track Expense <i class="fas fa-pencil-alt"></i></button>
                     </div>
 
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import NewExpense from './NewExpense'
-import NewEpxenseTextbox from './NewEpxenseTextbox'
+import NewExpenseTextbox from './NewExpenseTextbox'
 import './NewExpense.css'
 
 export default function NewExpenseTable(props) {
@@ -8,7 +8,7 @@ export default function NewExpenseTable(props) {
     return (
         <div className="new-expense__table">
 
-            <NewEpxenseTextbox />
+            <NewExpenseTextbox />
 
             <NewExpense enteredTitle={props.enteredTitle} enteredAmount={props.enteredAmount} enteredDate={props.enteredDate} setEnteredTitle={props.setEnteredTitle} setEnteredAmount={props.setEnteredAmount} setEnteredDate={props.setEnteredDate} expenses={props.expenses} updateExpenses={props.updateExpenses} />
 

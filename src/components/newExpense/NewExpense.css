@@ -121,7 +121,7 @@ input[type=date] {
     padding: 0.6rem 1.1rem;
     border: none;
     font-size: 0.8rem;
-    font-weight: 300;
+    font-weight: 500;
     background-color: var(--main-orange-color);
     color: white;
     border-radius: 20px;
