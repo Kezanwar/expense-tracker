@@ -15,5 +15,5 @@ CLEAN UP:
 
 - Create more components where needed in any currently crowded componenets
 - Remove all create-react-app unused boilerplate files
-- Create Utility folder for helper functions
+- Create Utility folder for helper functions and extract these from components and import from Utility.js
 - Add comments throughout all files that are missing
