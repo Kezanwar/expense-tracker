@@ -1,10 +1,6 @@
 import React from 'react'
 import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
-import '../UI/Transition.css'
-
-
-
 
 const Expenses = (props) => {
 
@@ -24,10 +20,6 @@ const Expenses = (props) => {
     filteredObjects.sort(byDate);
 
     props.liftingFilteredObjects(filteredObjects);
-
-    console.log(props.expenses);
-
-
 
     return (
         <div className="expenses">

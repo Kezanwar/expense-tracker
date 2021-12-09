@@ -20,11 +20,7 @@ const ExpenseItem = (props) => {
     const removeExpense = () => {
         setVis(prev => !prev);
         setTimeout(() => {
-
-            // props.liftingIDup(thisId)
-
             props.updateExpenses((prev) => prev.filter(expense => expense.id !== thisId))
-
         }, 350);
 
     }

@@ -8,11 +8,6 @@ import React, { useState } from 'react'
 
 function App() {
 
-  // liftingIDup
-
-  function liftingIDup(thisId) {
-    updateExpenses((prev) => prev.filter(expense => expense.id !== thisId))
-  }
 
   const [filteredAmount, setFilteredAmount] = useState(0.00)
 
@@ -80,7 +75,7 @@ function App() {
 
       <ExpensesFilter filteredAmount={filteredAmount} filterDate={filterDate} setFilterDate={setFilterDate} />
 
-      <Expenses liftingFilteredObjects={liftingFilteredObjects} liftingIDup={liftingIDup} filterDate={filterDate} expenses={expenses} updateExpenses={updateExpenses} />
+      <Expenses liftingFilteredObjects={liftingFilteredObjects} filterDate={filterDate} expenses={expenses} updateExpenses={updateExpenses} />
 
     </div>
   );
