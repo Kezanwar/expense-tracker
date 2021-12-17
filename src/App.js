@@ -1,34 +1,19 @@
-
-
 import Expenses from './components/expenses/Expenses';
 import ExpensesFilter from './components/expenseFilter/ExpensesFilter';
 import NewExpenseTable from './components/newExpense/NewExpenseTable';
+import ExpenseChart from './components/expenseChart/ExpenseChart';
 import React, { useState } from 'react'
-
 
 function App() {
 
 
-  const [filteredAmount, setFilteredAmount] = useState(0.00)
+  function liftNewExpense(newExpense) {
 
-  function liftingFilteredObjects(filteredObjects) {
-
-    function simpleArraySum(ar) {
-      var sum = 0;
-      for (var i = 0; i < ar.length; i++) {
-        sum += ar[i];
-      }
-      return sum;
-    }
-
-    const arr = filteredObjects.map(obj => obj.amount);
-
-    console.log(simpleArraySum(arr));
-
-    setFilteredAmount(simpleArraySum(arr));
+    updateExpenses((prev) => {
+      return [...prev, newExpense]
+    });
 
   }
-
 
   // expenses state
 
@@ -51,31 +36,20 @@ function App() {
     id: 123456
   }]);
 
-  // const [expenses, updateExpenses] = useState([]);
-
-  // inputStates
-
-  const [enteredTitle, setEnteredTitle] = useState('')
-
-  const [enteredAmount, setEnteredAmount] = useState('')
-
-  const [enteredDate, setEnteredDate] = useState('')
-
-
-  // filter state
 
   const [filterDate, setFilterDate] = useState('2021');
-
 
   return (
 
     <div>
 
-      <NewExpenseTable enteredTitle={enteredTitle} enteredAmount={enteredAmount} enteredDate={enteredDate} setEnteredTitle={setEnteredTitle} setEnteredAmount={setEnteredAmount} setEnteredDate={setEnteredDate} expenses={expenses} updateExpenses={updateExpenses} />
+      <NewExpenseTable liftNewExpense={liftNewExpense} />
 
-      <ExpensesFilter filteredAmount={filteredAmount} filterDate={filterDate} setFilterDate={setFilterDate} />
+      <ExpensesFilter expenses={expenses} filterDate={filterDate} setFilterDate={setFilterDate} />
 
-      <Expenses liftingFilteredObjects={liftingFilteredObjects} filterDate={filterDate} expenses={expenses} updateExpenses={updateExpenses} />
+      <ExpenseChart filterDate={filterDate} expenses={expenses} />
+
+      <Expenses filterDate={filterDate} expenses={expenses} updateExpenses={updateExpenses} />
 
     </div>
   );

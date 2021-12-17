@@ -10,8 +10,7 @@ export default function NewExpenseTable(props) {
 
             <NewExpenseTextbox />
 
-            <NewExpense enteredTitle={props.enteredTitle} enteredAmount={props.enteredAmount} enteredDate={props.enteredDate} setEnteredTitle={props.setEnteredTitle} setEnteredAmount={props.setEnteredAmount} setEnteredDate={props.setEnteredDate} expenses={props.expenses} updateExpenses={props.updateExpenses} />
-
+            <NewExpense liftNewExpense={props.liftNewExpense} />
         </div>
     )
 }

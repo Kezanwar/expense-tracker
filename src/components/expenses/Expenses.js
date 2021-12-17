@@ -19,8 +19,6 @@ const Expenses = (props) => {
 
     filteredObjects.sort(byDate);
 
-    props.liftingFilteredObjects(filteredObjects);
-
     return (
         <div className="expenses">
 

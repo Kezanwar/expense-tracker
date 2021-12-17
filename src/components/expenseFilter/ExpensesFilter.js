@@ -5,13 +5,38 @@ import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
 
+
+    // filter objects by state of year dropdown in expense filter
+
+    const filteredObjects = props.expenses.filter(object =>
+        object.date.toDateString().split(" ")[3] === props.filterDate);
+
+    // sort by date helper function
+
+    function byDate(a, b) {
+        return a.date.valueOf() - b.date.valueOf();
+    }
+
+    filteredObjects.sort(byDate);
+
+    function simpleArraySum(ar) {
+        var sum = 0;
+        for (var i = 0; i < ar.length; i++) {
+            sum += ar[i];
+        }
+        return sum;
+    }
+
+    const arr = filteredObjects.map(obj => obj.amount);
+
+    const filteredAmount = simpleArraySum(arr);
+
+
     const expenseFilterHandler = (event) => {
 
         props.setFilterDate(event.target.value);
 
     }
-
-
 
     return (
         <div className='expenses-filter'>
@@ -23,7 +48,7 @@ const ExpensesFilter = (props) => {
                         <option value='2020'>2020 &#8600;</option>
                         <option value='2019'>2019 &#8600;</option>
                     </select>
-                    <div className="expensesTotal">{props.filteredAmount > 0 ? 'Year Total:' : ''} <span className='text-gradient' >{props.filteredAmount > 0 ? '£' + props.filteredAmount.toFixed(2) : ''}</span></div>
+                    <div className="expensesTotal">{filteredAmount > 0 ? 'Year Total:' : ''} <span className='text-gradient' >{filteredAmount > 0 ? '£' + filteredAmount.toFixed(2) : ''}</span></div>
                 </div>
                 <div className='expense-filter__control-box' ></div>
                 <div className="csv-div text-gradient">

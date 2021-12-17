@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './NewExpense.css'
 
 
 function NewExpense(props) {
 
 
+    const [enteredTitle, setEnteredTitle] = useState('')
+
+    const [enteredAmount, setEnteredAmount] = useState('')
+
+    const [enteredDate, setEnteredDate] = useState('')
+
 
     const titleChangeHandler = (event) => {
-        props.setEnteredTitle(event.target.value);
+        setEnteredTitle(event.target.value);
     };
 
     const amountChangeHandler = (event) => {
-        props.setEnteredAmount(event.target.value);
+        setEnteredAmount(event.target.value);
     };
 
     const dateChangeHandler = (event) => {
-        props.setEnteredDate(event.target.value);
+        setEnteredDate(event.target.value);
     };
 
     const submitFormHandler = (event) => {
@@ -23,19 +29,18 @@ function NewExpense(props) {
         event.preventDefault();
         const uniq = 'id' + (new Date()).getTime()
 
-        props.updateExpenses((prev) => {
-            prev.push({
-                title: props.enteredTitle,
-                amount: parseFloat(props.enteredAmount),
-                date: new Date(props.enteredDate),
-                id: uniq
-            })
-            return prev
-        });
+        const newExpense = {
+            title: enteredTitle,
+            amount: parseFloat(enteredAmount),
+            date: new Date(enteredDate),
+            id: uniq
+        };
 
-        props.setEnteredAmount('');
-        // props.setEnteredDate('');
-        props.setEnteredTitle('');
+        props.liftNewExpense(newExpense);
+
+        setEnteredAmount('');
+        // setEnteredDate('');
+        setEnteredTitle('');
         // Two-way binding
     };
 
@@ -46,17 +51,17 @@ function NewExpense(props) {
 
                     <div className="new-expense__control">
                         <label className="text-gradient">Expense Title</label>
-                        <input type='text' value={props.enteredTitle} onChange={titleChangeHandler} />
+                        <input type='text' value={enteredTitle} onChange={titleChangeHandler} />
                     </div>
 
                     <div className="new-expense__control">
                         <label className="text-gradient">Expense Amount</label>
-                        <input type='number' value={props.enteredAmount} onChange={amountChangeHandler} min='0.01' step='0.01' />
+                        <input type='number' value={enteredAmount} onChange={amountChangeHandler} min='0.01' step='0.01' />
                     </div>
 
                     <div className="new-expense__control">
                         <label className="text-gradient">Expense Date</label>
-                        <input type='date' value={props.enteredDate} onChange={dateChangeHandler} min='2019-01-01' max='2022-12-31' />
+                        <input type='date' value={enteredDate} onChange={dateChangeHandler} min='2019-01-01' max='2022-12-31' />
                     </div>
 
                     <div className="new-expense__control btn">
