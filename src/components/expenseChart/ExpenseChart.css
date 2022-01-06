@@ -1,0 +1,13 @@
+.calendarSection {
+    height: 30vh;
+    position: relative;
+    margin-bottom: 7.5vh;
+    animation: fadeInUp 200ms ease-in;
+}
+
+@media (max-width: 780px) {
+    .calendarSection {
+        height: 20vh;
+        margin-bottom: 5vh;
+    }
+}

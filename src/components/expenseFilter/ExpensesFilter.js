@@ -38,6 +38,10 @@ const ExpensesFilter = (props) => {
 
     }
 
+    const chartStateHandler = (e) => {
+        props.liftChartState();
+    }
+
     return (
         <div className='expenses-filter'>
             <div className='expenses-filter__control'>
@@ -50,13 +54,18 @@ const ExpensesFilter = (props) => {
                     </select>
                     <div className="expensesTotal">{filteredAmount > 0 ? 'Year Total:' : ''} <span className='text-gradient' >{filteredAmount > 0 ? '£' + filteredAmount.toFixed(2) : ''}</span></div>
                 </div>
-                <div className='expense-filter__control-box' ></div>
-                <div className="csv-div text-gradient">
-                    <p>Download</p>
-                    <i class="fas fa-file-csv"></i>
+                <div className='expense-filter__control-box' >
+                    <div className="csv-div text-gradient">
+                        <p>Download</p>
+                        <i class="fas fa-file-csv"></i>
+                    </div>
+                    <div>
+                        <i onClick={chartStateHandler} class={props.chart === false ? 'far fa-chart-bar' : 'far fa-chart-bar active'}></i>
+                    </div>
                 </div>
+
             </div>
-        </div>
+        </div >
     );
 };
 

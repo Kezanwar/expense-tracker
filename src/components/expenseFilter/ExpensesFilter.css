@@ -42,8 +42,12 @@
 .expense-filter__control-box {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
     gap: 1rem;
+}
+
+.expense-filter__control-box:nth-of-type(2) {
+    align-items: flex-end;
 }
 
 .expensesTotal {
@@ -76,4 +80,20 @@
 .csv-div p {
     font-size: 0.9rem;
     font-weight: 600;
+}
+
+
+.fa-chart-bar {
+    background: rgb(199, 199, 199);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.fa-chart-bar.active {
+    background: -webkit-linear-gradient(320deg, var(--main-orange-color), var(--ion-tab-bar-color-selected));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 }

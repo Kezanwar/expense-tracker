@@ -6,17 +6,6 @@ import React, { useState } from 'react'
 
 function App() {
 
-
-  function liftNewExpense(newExpense) {
-
-    updateExpenses((prev) => {
-      return [...prev, newExpense]
-    });
-
-  }
-
-  // expenses state
-
   const [expenses, updateExpenses] = useState([{
     title: 'Haircut',
     amount: 12.00,
@@ -36,8 +25,19 @@ function App() {
     id: 123456
   }]);
 
-
   const [filterDate, setFilterDate] = useState('2021');
+
+  const [chart, setChart] = useState(false)
+
+  function liftNewExpense(newExpense) {
+    updateExpenses((prev) => {
+      return [...prev, newExpense]
+    });
+  }
+
+  const liftChartState = () => {
+    setChart(prev => !prev);
+  }
 
   return (
 
@@ -45,9 +45,9 @@ function App() {
 
       <NewExpenseTable liftNewExpense={liftNewExpense} />
 
-      <ExpensesFilter expenses={expenses} filterDate={filterDate} setFilterDate={setFilterDate} />
+      <ExpensesFilter chart={chart} liftChartState={liftChartState} expenses={expenses} filterDate={filterDate} setFilterDate={setFilterDate} />
 
-      <ExpenseChart filterDate={filterDate} expenses={expenses} />
+      <ExpenseChart chart={chart} filterDate={filterDate} expenses={expenses} />
 
       <Expenses filterDate={filterDate} expenses={expenses} updateExpenses={updateExpenses} />
 
