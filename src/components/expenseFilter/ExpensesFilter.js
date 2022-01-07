@@ -1,17 +1,14 @@
-
 import React from 'react';
-
+import { ExportToCsv } from 'export-to-csv';
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
 
+    // --- filtered amount block ---
 
-    // filter objects by state of year dropdown in expense filter
+    //  filter objects by state of year dropdown in expense filter
 
-    const filteredObjects = props.expenses.filter(object =>
-        object.date.toDateString().split(" ")[3] === props.filterDate);
-
-    // sort by date helper function
+    const filteredObjects = props.expenses.filter(object => object.date.toDateString().split(" ")[3] === props.filterDate);
 
     function byDate(a, b) {
         return a.date.valueOf() - b.date.valueOf();
@@ -31,15 +28,45 @@ const ExpensesFilter = (props) => {
 
     const filteredAmount = simpleArraySum(arr);
 
+    // --- filtered amount block end ---
+
+    // --- CSV block ---
+
+    const options = {
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: props.filterDate + ': £' + filteredAmount,
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+        filename: `${props.filterDate}__expenseTrackerKez`
+    };
+
+    const csvExporter = new ExportToCsv(options);
+
+    const csvData = filteredObjects.map(obj => {
+        return {
+            Expense: obj.title,
+            Amount: '£' + obj.amount,
+            Date: obj.date.toISOString().split('T')[0]
+        }
+    });
+
+    // --- CSV block end ---
 
     const expenseFilterHandler = (event) => {
-
         props.setFilterDate(event.target.value);
-
     }
 
     const chartStateHandler = (e) => {
         props.liftChartState();
+    }
+
+    const csvHandler = () => {
+        csvExporter.generateCsv(csvData);
     }
 
     return (
@@ -55,7 +82,7 @@ const ExpensesFilter = (props) => {
                     <div className="expensesTotal">{filteredAmount > 0 ? 'Year Total:' : ''} <span className='text-gradient' >{filteredAmount > 0 ? '£' + filteredAmount.toFixed(2) : ''}</span></div>
                 </div>
                 <div className='expense-filter__control-box' >
-                    <div className="csv-div text-gradient">
+                    <div onClick={csvHandler} className="csv-div text-gradient">
                         <p>Download</p>
                         <i class="fas fa-file-csv"></i>
                     </div>

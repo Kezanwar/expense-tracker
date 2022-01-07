@@ -84,6 +84,7 @@
 
 
 .fa-chart-bar {
+    cursor: pointer;
     background: rgb(199, 199, 199);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
