@@ -5,5 +5,4 @@ DEV TO-DO LIST:
 
 - Create second graph section
 - Chain the iconAnimation (which is currently on a 10s loop) to the timeline of expense user input and submit
-- Implement localStorage of expenses
 - Make the app PWA
