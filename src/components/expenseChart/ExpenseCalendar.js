@@ -8,9 +8,9 @@ function ExpenseCalendar(props) {
     // filter objects by state of year dropdown in expense filter
 
     const filteredObjects = props.expenses.filter(object => {
-
         return object.date.split('-')[0] === props.filterDate
     });
+
     // sort by date helper function
 
     let data = []
@@ -20,7 +20,6 @@ function ExpenseCalendar(props) {
         const existsArray = data.filter(dataObject => dataObject.day === filteredObject.date)
 
         if (existsArray.length > 0) {
-
             data.forEach(dataObject => {
                 if (dataObject.day === filteredObject.date) {
                     dataObject.value = dataObject.value + filteredObject.amount
@@ -30,7 +29,6 @@ function ExpenseCalendar(props) {
                 }
             })
         }
-
         else {
             data.push({
                 value: filteredObject.amount,

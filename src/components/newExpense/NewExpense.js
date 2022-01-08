@@ -4,13 +4,9 @@ import './NewExpense.css'
 
 function NewExpense(props) {
 
-
     const [enteredTitle, setEnteredTitle] = useState('')
-
     const [enteredAmount, setEnteredAmount] = useState('')
-
     const [enteredDate, setEnteredDate] = useState('')
-
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -21,39 +17,29 @@ function NewExpense(props) {
     };
 
     const dateChangeHandler = (event) => {
-        console.log(event.target.value)
         setEnteredDate(event.target.value);
     };
 
     const submitFormHandler = (event) => {
         event.preventDefault();
-
         const formArray = [enteredAmount, enteredTitle, enteredDate];
-
         if (formArray.some(el => el === '')) {
             return
         }
 
         else {
             const uniq = 'id' + (new Date()).getTime()
-
             const newExpense = {
                 title: enteredTitle,
                 amount: parseFloat(enteredAmount),
                 date: enteredDate,
                 id: uniq
             };
-
             props.liftNewExpense(newExpense);
-
             setEnteredAmount('');
             // setEnteredDate('');
             setEnteredTitle('');
-            // Two-way binding
-
         }
-
-
     };
 
     return (

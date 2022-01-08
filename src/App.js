@@ -8,7 +8,6 @@ function App() {
 
   const [expenses, updateExpenses] = useState(() => {
     const expenseStorage = localStorage.getItem('expenses');
-    console.log("expenseStorage!!!" + expenseStorage);
     if (expenseStorage === null) (console.log('null'));
     return expenseStorage !== null
       ? JSON.parse(expenseStorage)
@@ -40,7 +39,6 @@ function App() {
 
   function liftNewExpense(newExpense) {
     updateExpenses((prev) => {
-      console.log(JSON.stringify([...prev, newExpense]));
       localStorage.setItem('expenses', JSON.stringify([...prev, newExpense]));
       return [...prev, newExpense]
     });
