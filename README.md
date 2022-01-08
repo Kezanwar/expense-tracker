@@ -1,6 +1,8 @@
 # expense-tracker (WIP)
 An Expense Tracker built with ReactJS
 
+View the project here https://expensetracker-kez.web.app/
+
 DEV TO-DO LIST:
 
 - Create second graph section
