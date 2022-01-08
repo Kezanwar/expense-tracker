@@ -5,8 +5,7 @@ import './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
 
-    const date = props.expense.date.toDateString();
-
+    const date = new Date(props.expense.date).toDateString();
     const dateArray = date.split(" ");
     const dateDay = dateArray[0];
     const dateNumber = dateArray[2];
@@ -14,13 +13,23 @@ const ExpenseItem = (props) => {
     const dateYear = dateArray[3];
     const thisId = props.expense.id;
 
+
     const [vis, setVis] = useState(true);
-
-
     const removeExpense = () => {
         setVis(prev => !prev);
         setTimeout(() => {
-            props.updateExpenses((prev) => prev.filter(expense => expense.id !== thisId))
+            props.updateExpenses((prev) => {
+                const filteredExpenseArray = prev.filter(expense => expense.id !== thisId);
+                const expenseStorage = localStorage.getItem('expenses');
+                const json = JSON.parse(`${expenseStorage}`);
+                if (json.length === 1) {
+                    localStorage.removeItem('expenses');
+                }
+                else {
+                    localStorage.setItem('expenses', JSON.stringify([filteredExpenseArray]));
+                }
+                return filteredExpenseArray
+            })
         }, 350);
 
     }

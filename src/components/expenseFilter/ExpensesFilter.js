@@ -8,7 +8,12 @@ const ExpensesFilter = (props) => {
 
     //  filter objects by state of year dropdown in expense filter
 
-    const filteredObjects = props.expenses.filter(object => object.date.toDateString().split(" ")[3] === props.filterDate);
+    const filteredObjects = props.expenses.filter(object => {
+
+        // if (object.date.type)
+        return object.date.split('-')[0] === props.filterDate
+
+    });
 
     function byDate(a, b) {
         return a.date.valueOf() - b.date.valueOf();
@@ -51,7 +56,7 @@ const ExpensesFilter = (props) => {
         return {
             Expense: obj.title,
             Amount: '£' + obj.amount,
-            Date: obj.date.toISOString().split('T')[0]
+            Date: obj.date
         }
     });
 
@@ -66,7 +71,13 @@ const ExpensesFilter = (props) => {
     }
 
     const csvHandler = () => {
-        csvExporter.generateCsv(csvData);
+        if (csvData.length === 0) {
+            return
+        }
+        else {
+            csvExporter.generateCsv(csvData);
+        }
+
     }
 
     return (

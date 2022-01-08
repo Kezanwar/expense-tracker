@@ -6,8 +6,10 @@ const Expenses = (props) => {
 
     // filter objects by state of year dropdown in expense filter
 
-    const filteredObjects = props.expenses.filter(object =>
-        object.date.toDateString().split(" ")[3] === props.filterDate);
+    const filteredObjects = props.expenses.filter(object => {
+        // if (object.date.type)
+        return object.date.split('-')[0] === props.filterDate
+    });
 
     // sort by date helper function
 

@@ -6,31 +6,42 @@ import React, { useState } from 'react'
 
 function App() {
 
-  const [expenses, updateExpenses] = useState([{
-    title: 'Haircut',
-    amount: 12.00,
-    date: new Date(2020, 7, 14),
-    id: 1234
-  },
-  {
-    title: 'Chocolate',
-    amount: 12.00,
-    date: new Date(2021, 11, 13),
-    id: 12345
-  },
-  {
-    title: 'Chocolate',
-    amount: 12.00,
-    date: new Date(2021, 11, 15),
-    id: 123456
-  }]);
+  const [expenses, updateExpenses] = useState(() => {
+    const expenseStorage = localStorage.getItem('expenses');
+    console.log("expenseStorage!!!" + expenseStorage);
+    if (expenseStorage === null) (console.log('null'));
+    return expenseStorage !== null
+      ? JSON.parse(expenseStorage)
+      : [];
+  });
 
-  const [filterDate, setFilterDate] = useState('2021');
+  // const [expenses, updateExpenses] = useState([{
+  //   title: 'Haircut',
+  //   amount: 12.00,
+  //   date: new Date(2020, 7, 14),
+  //   id: 1234
+  // },
+  // {
+  //   title: 'Chocolate',
+  //   amount: 12.00,
+  //   date: new Date(2021, 11, 13),
+  //   id: 12345
+  // },
+  // {
+  //   title: 'Chocolate',
+  //   amount: 12.00,
+  //   date: new Date(2021, 11, 15),
+  //   id: 123456
+  // }]);
+
+  const [filterDate, setFilterDate] = useState('2022');
 
   const [chart, setChart] = useState(false)
 
   function liftNewExpense(newExpense) {
     updateExpenses((prev) => {
+      console.log(JSON.stringify([...prev, newExpense]));
+      localStorage.setItem('expenses', JSON.stringify([...prev, newExpense]));
       return [...prev, newExpense]
     });
   }

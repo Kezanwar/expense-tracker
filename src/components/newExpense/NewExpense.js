@@ -21,27 +21,39 @@ function NewExpense(props) {
     };
 
     const dateChangeHandler = (event) => {
+        console.log(event.target.value)
         setEnteredDate(event.target.value);
     };
 
     const submitFormHandler = (event) => {
-
         event.preventDefault();
-        const uniq = 'id' + (new Date()).getTime()
 
-        const newExpense = {
-            title: enteredTitle,
-            amount: parseFloat(enteredAmount),
-            date: new Date(enteredDate),
-            id: uniq
-        };
+        const formArray = [enteredAmount, enteredTitle, enteredDate];
 
-        props.liftNewExpense(newExpense);
+        if (formArray.some(el => el === '')) {
+            return
+        }
 
-        setEnteredAmount('');
-        // setEnteredDate('');
-        setEnteredTitle('');
-        // Two-way binding
+        else {
+            const uniq = 'id' + (new Date()).getTime()
+
+            const newExpense = {
+                title: enteredTitle,
+                amount: parseFloat(enteredAmount),
+                date: enteredDate,
+                id: uniq
+            };
+
+            props.liftNewExpense(newExpense);
+
+            setEnteredAmount('');
+            // setEnteredDate('');
+            setEnteredTitle('');
+            // Two-way binding
+
+        }
+
+
     };
 
     return (

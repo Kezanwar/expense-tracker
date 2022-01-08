@@ -7,23 +7,22 @@ function ExpenseCalendar(props) {
 
     // filter objects by state of year dropdown in expense filter
 
-    const filteredObjects = props.expenses.filter(object =>
-        object.date.toDateString().split(" ")[3] === props.filterDate);
+    const filteredObjects = props.expenses.filter(object => {
 
+        return object.date.split('-')[0] === props.filterDate
+    });
     // sort by date helper function
 
     let data = []
 
     filteredObjects.forEach(filteredObject => {
 
-        const filteredObjDateString = filteredObject.date.toISOString().split('T')[0];
-
-        const existsArray = data.filter(dataObject => dataObject.day === filteredObjDateString)
+        const existsArray = data.filter(dataObject => dataObject.day === filteredObject.date)
 
         if (existsArray.length > 0) {
 
             data.forEach(dataObject => {
-                if (dataObject.day === filteredObjDateString) {
+                if (dataObject.day === filteredObject.date) {
                     dataObject.value = dataObject.value + filteredObject.amount
                 }
                 else {
@@ -35,7 +34,7 @@ function ExpenseCalendar(props) {
         else {
             data.push({
                 value: filteredObject.amount,
-                day: filteredObject.date.toISOString().split('T')[0]
+                day: filteredObject.date
             });
         }
     });
