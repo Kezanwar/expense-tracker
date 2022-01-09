@@ -9,7 +9,8 @@ function NewExpense(props) {
     const [enteredDate, setEnteredDate] = useState('')
 
     const titleChangeHandler = (event) => {
-        setEnteredTitle(event.target.value);
+        const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);
+        setEnteredTitle(capitalizeFirstLetter(event.target.value));
     };
 
     const amountChangeHandler = (event) => {
@@ -22,11 +23,9 @@ function NewExpense(props) {
 
     const submitFormHandler = (event) => {
         event.preventDefault();
-        const formArray = [enteredAmount, enteredTitle, enteredDate];
-        if (formArray.some(el => el === '')) {
+        if ([enteredAmount, enteredTitle, enteredDate].some(el => el === '')) {
             return
         }
-
         else {
             const uniq = 'id' + (new Date()).getTime()
             const newExpense = {
@@ -37,8 +36,8 @@ function NewExpense(props) {
             };
             props.liftNewExpense(newExpense);
             setEnteredAmount('');
-            // setEnteredDate('');
             setEnteredTitle('');
+            // Persist entered date on UI for usability
         }
     };
 

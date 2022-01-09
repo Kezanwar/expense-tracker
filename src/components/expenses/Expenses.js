@@ -1,5 +1,6 @@
 import React from 'react'
 import ExpenseItem from './ExpenseItem';
+import { byDate } from '../Utility/Utility';
 import './Expenses.css';
 
 const Expenses = (props) => {
@@ -8,10 +9,6 @@ const Expenses = (props) => {
         // if (object.date.type)
         return object.date.split('-')[0] === props.filterDate
     });
-    // sort by date helper function
-    function byDate(a, b) {
-        return a.date.valueOf() - b.date.valueOf();
-    }
     // sort filtered object by date for UI rendering
     filteredObjects.sort(byDate);
 

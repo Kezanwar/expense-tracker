@@ -100,13 +100,11 @@
 
 }
 
-/* @media (max-width: 780px) {
-    .fa-file-csv {
-        display: list-item;
-        list-style: none;
-    }
+    @supports (-webkit-touch-callout: none) {
 
-    .expenses-filter select {
-        color: black
+        /* CSS specific to iOS devices */
+        .expenses-filter select {
+           all: unset;
+        
+        }
     }
-} */

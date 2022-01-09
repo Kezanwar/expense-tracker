@@ -1,5 +1,6 @@
 import React from 'react';
 import { ExportToCsv } from 'export-to-csv';
+import { byDate, isSafari } from '../Utility/Utility';
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
@@ -14,10 +15,6 @@ const ExpensesFilter = (props) => {
         return object.date.split('-')[0] === props.filterDate
 
     });
-
-    function byDate(a, b) {
-        return a.date.valueOf() - b.date.valueOf();
-    }
 
     filteredObjects.sort(byDate);
 
@@ -77,8 +74,9 @@ const ExpensesFilter = (props) => {
         else {
             csvExporter.generateCsv(csvData);
         }
-
     }
+
+    console.log(isSafari);
 
     return (
         <div className='expenses-filter'>
