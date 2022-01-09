@@ -84,7 +84,7 @@ const ExpensesFilter = (props) => {
         <div className='expenses-filter'>
             <div className='expenses-filter__control'>
                 <div className='expense-filter__control-box'>
-                    <select value={props.filterDate} onChange={expenseFilterHandler}>
+                    <select className='text-gradient' value={props.filterDate} onChange={expenseFilterHandler}>
                         <option value='2022'>2022 &#8600; </option>
                         <option value='2021'>2021 &#8600;</option>
                         <option value='2020'>2020 &#8600;</option>
@@ -94,7 +94,7 @@ const ExpensesFilter = (props) => {
                 </div>
                 <div className='expense-filter__control-box' >
                     <div onClick={csvHandler} className="csv-div text-gradient">
-                        <p>Download</p>
+                        <p className='text-gradient'>Download</p>
                         <i class="fas fa-file-csv"></i>
                     </div>
                     <div>

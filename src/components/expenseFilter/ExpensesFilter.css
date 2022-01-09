@@ -18,9 +18,8 @@
 .expenses-filter select {
     font: inherit;
     font-weight: 800;
-    background-color: transparent;
     padding: 0.75rem 0.75rem;
-    border: none;
+    border: 0px solid;
     border-bottom: 1px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(90deg, var(--main-orange-color) 20%, var(--ion-tab-bar-color-selected) 95%);
@@ -29,9 +28,10 @@
     outline: none;
     width: 75px;
     transition: all 150ms ease;
-    background: -webkit-linear-gradient(320deg, var(--main-orange-color), var(--ion-tab-bar-color-selected));
+    background: -webkit-linear-gradient(45deg, var(--main-orange-color), var(--ion-tab-bar-color-selected));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: fadeInUp 250ms ease forwards;
 }
 
 .expenses-filter select:hover, .csv-div:hover {
@@ -66,6 +66,7 @@
 }
 
 .csv-div {
+    border: 0px solid;
     border-bottom: 1px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(90deg, var(--main-orange-color) 20%, var(--ion-tab-bar-color-selected) 95%);
@@ -98,3 +99,14 @@
     -webkit-text-fill-color: transparent;
 
 }
+
+/* @media (max-width: 780px) {
+    .fa-file-csv {
+        display: list-item;
+        list-style: none;
+    }
+
+    .expenses-filter select {
+        color: black
+    }
+} */
